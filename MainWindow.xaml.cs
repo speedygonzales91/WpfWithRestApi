@@ -29,6 +29,8 @@ namespace WpfWithRestApi
         private void uploadButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
+
+            fileDialog.Filter =  "Image files (*.png; *.jpg)|*.png;*.jpg;*.jpeg| All Files (*.*)|*.*";
             if (fileDialog.ShowDialog() == true)
             {
                 string filename = fileDialog.FileName;
