@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfWithRestApi.Classes;
 
 namespace WpfWithRestApi
 {
@@ -64,6 +66,10 @@ namespace WpfWithRestApi
                     var response = await client.PostAsync(url, content);
 
                     var responseString = await response.Content.ReadAsStringAsync();
+
+                    List<Prediction> predictions = (JsonConvert.DeserializeObject<CustomVision>(responseString)).predictions;
+
+
                 }
             }
         }
