@@ -5,16 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfWithRestApi"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="500">
-
-    <StackPanel Margin="5">
-        <Button x:Name="uploadButton"
+        Title="MainWindow" Height="450" Width="570">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="5">
+            <Button x:Name="uploadButton"
                 Margin="0,10,0,0"
                 Content="Upload"
                 HorizontalAlignment="Center"
                 Click="uploadButton_Click">
-        </Button>
-        <Image x:Name="selectedImage"
+            </Button>
+            <Image x:Name="selectedImage"
                Margin="10"></Image>
-    </StackPanel>
+        </StackPanel>
+        <ListView   x:Name="predictionsListView"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Margin="5">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Tag"
+                                    Width="100"
+                                    DisplayMemberBinding="{Binding TagName}">
+                        
+                    </GridViewColumn>
+                    <GridViewColumn Header="Probability"
+                                    Width="80"
+                                    DisplayMemberBinding="{Binding Path=Probability, StringFormat=P2}">
+
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
 </Window>

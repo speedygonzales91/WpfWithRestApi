@@ -67,9 +67,9 @@ namespace WpfWithRestApi
 
                     var responseString = await response.Content.ReadAsStringAsync();
 
-                    List<Prediction> predictions = (JsonConvert.DeserializeObject<CustomVision>(responseString)).predictions;
+                    List<Prediction> predictions = (JsonConvert.DeserializeObject<CustomVision>(responseString)).Predictions;
 
-
+                    predictionsListView.ItemsSource = predictions;
                 }
             }
         }
